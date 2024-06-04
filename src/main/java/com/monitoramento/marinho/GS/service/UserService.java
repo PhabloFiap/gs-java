@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,9 +22,11 @@ private PasswordEncoder passwordEncoder;
         this.passwordEncoder = passwordLoader;
 
     }
-
+    public List<User> listUser(){
+        return userRepository.findAll();
+    }
     @Transactional
-    public User createUser(@NotNull User user) {
+    public User createUser( User user) {
         String encodePassword =passwordEncoder.encode(user.getSenha());
         user.setSenha(encodePassword);
         return userRepository.save(user);

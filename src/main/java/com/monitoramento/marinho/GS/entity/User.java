@@ -25,13 +25,13 @@ public class User {
     @Column(name="id_usuario")
     private Long id;
 
-    @Column(name ="nm_usuario", nullable = false, unique = true)
+    @Column(name ="nm_usuario", nullable = false)
     private String usuario;
 
     @Column(name ="senha", nullable = false)
     private String senha;
 
-    @Column(name="role", nullable = false) //role: O papel do usuário no sistema (por exemplo, Admin, Researcher, Public).
+    @Column(name="role") //role: O papel do usuário no sistema (por exemplo, Admin, Researcher, Public).
     private String role;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE)
@@ -96,6 +96,11 @@ public class User {
         this.senha = senha;
         this.role = role;
         this.incidents = incidents;
+    }
+
+    public User(String usuario, String senha) {
+        this.usuario = usuario;
+        this.senha = senha;
     }
     //    public User(String usuario, String senha, String role, Set<Incident> incidents) {
 //        this.usuario = usuario;

@@ -97,6 +97,13 @@ public class Incident {
         this.usuario = usuario;
     }
 
+    public Incident(String tipo, String descricao, String lugar, LocalDateTime timestamp) {
+        this.tipo = tipo;
+        this.descricao = descricao;
+        this.lugar = lugar;
+        this.timestamp = timestamp;
+    }
+
     public Incident(){
 
     }
